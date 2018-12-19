@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div role="main" class="container"> 
+    <form action="/" method="GET" class="form-group">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" placeholder="Frase"/>
+            </div>
+            <div class="form-group col-md-3">
+                <select class="form-control">
+                    <option value="" selected>Personaje</option>
+                    <option value="1">Saitaman</option>
+                    <option value="2">Naruto</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <select name="SERIE_ELEGIR" class="form-control" id="serie">
+                    <option value="" selected>Serie</option>
+                    {% for reg in SERIE_ELEGIR %}
+                        <option value="{{ reg }}">{{ reg }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <button class="btn btn-default btn-block" type="submit">
+                    Buscar<span><i class="fas fa-search"></i></span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6">
+                <h1>{{ post.serie }}</h1>
+                <p>Por {{ post.autor }} el {{ post.fecha_subida }}</p>
+                <img src="{{ post.imagen }}"/>
+                <p> {{ post.frase }} </p>
+                <p> {{ post.nombre_personaje }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+

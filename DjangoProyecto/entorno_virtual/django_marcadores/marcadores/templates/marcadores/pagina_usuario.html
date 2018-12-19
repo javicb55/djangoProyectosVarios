@@ -1,0 +1,16 @@
+{% extends "marcadores/base.html" %}
+{% block title %}{{ nombreusuario }}{% endblock %}
+{% block head %}Marcadores for {{ nombreusuario }}{% endblock %}
+{% block content %}
+  {% if marcadores %}
+    <ul>
+      {% for marcador in marcadores %}
+        <li><a href="{{ marcador.link.url }}">
+          {{ marcador.titulo }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No marcadores encontrados</p>
+  {% endif %}
+{% endblock %}
